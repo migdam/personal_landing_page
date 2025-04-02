@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Tailwind CSS for styling consistency -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Marked.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        /* Basic styling for the article page */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap');
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #111827; /* Dark background similar to index */
+            color: #d1d5db; /* Light gray text */
+            line-height: 1.7;
+        }
+        .article-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: rgba(31, 41, 55, 0.8); /* Slightly lighter dark bg */
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .back-link:hover {
+            color: #f3f4f6;
+        }
+        /* Styling for generated HTML from Markdown */
+        #article-content h1, #article-content h2, #article-content h3 {
+            color: #f9fafb; /* White headings */
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            font-weight: 600;
+            border-bottom: 1px solid #4b5563; /* Subtle separator */
+            padding-bottom: 0.3em;
+        }
+        #article-content h1 { font-size: 2.25rem; }
+        #article-content h2 { font-size: 1.875rem; }
+        #article-content h3 { font-size: 1.5rem; }
+        #article-content p {
+            margin-bottom: 1.25rem;
+        }
+        #article-content a {
+            color: #60a5fa; /* Tailwind blue-400 */
+            text-decoration: underline;
+        }
+        #article-content a:hover {
+            color: #93c5fd; /* Lighter blue */
+        }
+        #article-content ul, #article-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+        #article-content li {
+            margin-bottom: 0.5rem;
+        }
+        #article-content blockquote {
+            border-left: 4px solid #4b5563;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            color: #9ca3af;
+            font-style: italic;
+        }
+        #article-content code {
+            background-color: #374151; /* Gray-700 */
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        #article-content pre code {
+            display: block;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+        #article-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+    </style>
+    <title>Article</title> <!-- Title will be updated by script -->
+</head>
+<body>
+    <div class="article-container">
+        <a href="index.html#blog" class="back-link">
+            <i class="fas fa-arrow-left mr-2"></i> Back to Blog
+        </a>
+        <div id="article-content">
+            <p class="text-center text-xl p-8">Loading article...</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const contentDiv = document.getElementById('article-content');
+            const urlParams = new URLSearchParams(window.location.search);
+            const postPath = urlParams.get('post');
+
+            if (!postPath) {
+                contentDiv.innerHTML = '<p class="text-red-500 text-center">Error: No article specified.</p>';
+                return;
+            }
+
+            // Basic security check: Ensure path starts with 'articles/' and ends with '.md'
+            if (!postPath.startsWith('articles/') || !postPath.endsWith('.md')) {
+                 contentDiv.innerHTML = '<p class="text-red-500 text-center">Error: Invalid article path.</p>';
+                 return;
+            }
+
+            fetch(postPath)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(markdown => {
+                    // Basic front matter parsing (optional, for title)
+                    let articleMarkdown = markdown;
+                    let articleTitle = "Article"; // Default title
+                    const frontMatterMatch = markdown.match(/^---\s*([\s\S]*?)\s*---/);
+                    if (frontMatterMatch && frontMatterMatch[1]) {
+                        const frontMatterContent = frontMatterMatch[1];
+                        const titleMatch = frontMatterContent.match(/title:\s*"?([^"\n]+)"?/);
+                        if (titleMatch && titleMatch[1]) {
+                            articleTitle = titleMatch[1].trim();
+                            document.title = articleTitle; // Update page title
+                        }
+                        // Remove front matter from markdown before parsing
+                        articleMarkdown = markdown.substring(frontMatterMatch[0].length).trim();
+                    }
+
+                    // Convert Markdown to HTML using marked.js
+                    contentDiv.innerHTML = marked.parse(articleMarkdown);
+                })
+                .catch(error => {
+                    console.error('Error fetching or parsing article:', error);
+                    contentDiv.innerHTML = `<p class="text-red-500 text-center">Error loading article. Please check the console for details. Path: ${postPath}</p>`;
+                });
+        });
+    </script>
+</body>
+</html>
