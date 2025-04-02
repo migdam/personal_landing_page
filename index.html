@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michal Migda | Creative Professional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            filter: brightness(0.4);
+        }
+        
+        .gradient-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+        }
+        
+        .text-stroke {
+            -webkit-text-stroke: 1px white;
+            color: transparent;
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px);
+            filter: drop-shadow(0 5px 10px rgba(255,255,255,0.3));
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .scroll-down {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body class="text-white">
+    <!-- Video Background -->
+    <div class="video-background">
+        <video autoplay muted loop>
+            <source src="background.mp4" type="video/mp4">
+        </video>
+        <div class="gradient-overlay"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 py-6 px-8 backdrop-blur-sm bg-black/30">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-wider">
+                <span class="text-stroke">MICHAL</span> <span class="glow-text">MIGDA</span>
+            </div>
+            <div class="hidden md:flex space-x-10">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#work" class="nav-link">Work</a>
+                <a href="#blog" class="nav-link">Blog</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button class="text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tight">
+                <span class="text-stroke">CREATIVE</span> <span class="glow-text">VISIONARY</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 font-light max-w-2xl mx-auto">
+                Michal Migda is pushing boundaries in digital innovation and creative expression.
+            </p>
+            <div class="flex justify-center space-x-6">
+                <a href="#work" class="px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105">
+                    View Work
+                </a>
+                <a href="#contact" class="px-8 py-3 border-2 border-white font-bold rounded-full hover:bg-white hover:bg-opacity-10 transition-all duration-300 transform hover:scale-105">
+                    Get in Touch
+                </a>
+            </div>
+            <div class="mt-20 scroll-down">
+                <a href="#about" class="flex flex-col items-center">
+                    <span class="mb-2">Scroll Down</span>
+                    <i class="fas fa-chevron-down text-xl"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-8 bg-black bg-opacity-50 backdrop-blur-sm">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-16 text-center">
+                <span class="text-stroke">ABOUT</span> <span class="glow-text">MICHAL</span>
+            </h2>
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                             alt="Michal Migda" 
+                             class="w-full h-auto rounded-lg shadow-2xl transform rotate-3 hover:rotate-0 transition-all duration-500">
+                        <div class="absolute -bottom-6 -right-6 bg-gradient-to-r from-purple-500 to-blue-500 w-32 h-32 rounded-full -z-10"></div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold mb-6">Who I Am</h3>
+                    <p class="text-lg mb-6 leading-relaxed">
+                        Michal Migda is a multidisciplinary creative professional with over a decade of experience in digital design, development, and innovation. His work bridges the gap between technology and artistry.
+                    </p>
+                    <p class="text-lg mb-8 leading-relaxed">
+                        With a passion for pushing boundaries, Michal has collaborated with global brands, startups, and cultural institutions to create memorable digital experiences that resonate with audiences worldwide.
+                    </p>
+                    <div class="flex space-x-4">
+                        <div class="bg-white bg-opacity-10 p-4 rounded-lg text-center">
+                            <div class="text-3xl font-bold mb-2">10+</div>
+                            <div class="text-sm">Years Experience</div>
+                        </div>
+                        <div class="bg-white bg-opacity-10 p-4 rounded-lg text-center">
+                            <div class="text-3xl font-bold mb-2">50+</div>
+                            <div class="text-sm">Projects Completed</div>
+                        </div>
+                        <div class="bg-white bg-opacity-10 p-4 rounded-lg text-center">
+                            <div class="text-3xl font-bold mb-2">20+</div>
+                            <div class="text-sm">Happy Clients</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section id="work" class="py-20 px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-16 text-center">
+                <span class="text-stroke">SELECTED</span> <span class="glow-text">WORK</span>
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-white bg-opacity-10 rounded-xl overflow-hidden backdrop-blur-sm">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Project 1" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Digital Experience</h3>
+                        <p class="text-sm opacity-80 mb-4">Interactive installation for Museum of Modern Art</p>
+                        <a href="#" class="text-sm font-bold flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-white bg-opacity-10 rounded-xl overflow-hidden backdrop-blur-sm">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" 
+                             alt="Project 2" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Brand Identity</h3>
+                        <p class="text-sm opacity-80 mb-4">Complete rebrand for global tech startup</p>
+                        <a href="#" class="text-sm font-bold flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-white bg-opacity-10 rounded-xl overflow-hidden backdrop-blur-sm">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Project 3" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Web Platform</h3>
+                        <p class="text-sm opacity-80 mb-4">Next-gen e-commerce experience</p>
+                        <a href="#" class="text-sm font-bold flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-16">
+                <a href="#" class="inline-flex items-center px-6 py-3 border-2 border-white rounded-full font-bold hover:bg-white hover:bg-opacity-10 transition-all">
+                    View All Projects <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-20 px-8 bg-black bg-opacity-50 backdrop-blur-sm">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-16 text-center">
+                <span class="text-stroke">LATEST</span> <span class="glow-text">ARTICLES</span>
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog Post 1 -->
+                <div class="project-card bg-white bg-opacity-10 rounded-xl overflow-hidden backdrop-blur-sm">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                             alt="Blog Post 1"
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">The Future of Digital Design</h3>
+                        <p class="text-sm opacity-80 mb-4">Exploring upcoming trends and technologies.</p>
+                        <a href="article.html?post=articles/article1.md" class="text-sm font-bold flex items-center">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 2 -->
+                <div class="project-card bg-white bg-opacity-10 rounded-xl overflow-hidden backdrop-blur-sm">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                             alt="Blog Post 2"
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Bridging Art and Technology</h3>
+                        <p class="text-sm opacity-80 mb-4">How creativity thrives in the digital age.</p>
+                        <a href="article.html?post=articles/article2.md" class="text-sm font-bold flex items-center">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 3 -->
+                <div class="project-card bg-white bg-opacity-10 rounded-xl overflow-hidden backdrop-blur-sm">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                             alt="Blog Post 3"
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Innovation Through Collaboration</h3>
+                        <p class="text-sm opacity-80 mb-4">The power of teamwork in creative projects.</p>
+                        <a href="article.html?post=articles/article3.md" class="text-sm font-bold flex items-center">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-16">
+                <a href="#" class="inline-flex items-center px-6 py-3 border-2 border-white rounded-full font-bold hover:bg-white hover:bg-opacity-10 transition-all">
+                    View All Articles <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-8 bg-black bg-opacity-50 backdrop-blur-sm">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-bold mb-16 text-center">
+                <span class="text-stroke">GET IN</span> <span class="glow-text">TOUCH</span>
+            </h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Let's Collaborate</h3>
+                    <p class="mb-8 leading-relaxed">
+                        Interested in working together or have a project in mind? Feel free to reach out through the contact form or connect via social media.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="bg-white bg-opacity-10 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm opacity-80">Email</div>
+                                <div>hello@michalmigda.com</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-white bg-opacity-10 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm opacity-80">Phone</div>
+                                <div>+1 (555) 123-4567</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-white bg-opacity-10 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm opacity-80">Location</div>
+                                <div>New York, NY</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4 mt-8">
+                        <a href="#" class="social-icon bg-white bg-opacity-10 p-3 rounded-full w-12 h-12 flex items-center justify-center">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon bg-white bg-opacity-10 p-3 rounded-full w-12 h-12 flex items-center justify-center">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon bg-white bg-opacity-10 p-3 rounded-full w-12 h-12 flex items-center justify-center">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-icon bg-white bg-opacity-10 p-3 rounded-full w-12 h-12 flex items-center justify-center">
+                            <i class="fab fa-dribbble"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block mb-2">Your Name</label>
+                            <input type="text" id="name" class="w-full bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50">
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-2">Email Address</label>
+                            <input type="email" id="email" class="w-full bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50">
+                        </div>
+                        <div>
+                            <label for="message" class="block mb-2">Your Message</label>
+                            <textarea id="message" rows="4" class="w-full bg-white bg-opacity-10 border border-white border-opacity-20 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-purple-500 to-blue-500 py-3 rounded-lg font-bold hover:opacity-90 transition-all transform hover:scale-105">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 px-8 text-center text-sm opacity-80">
+        <div class="max-w-6xl mx-auto">
+            <div class="mb-6">
+                <div class="text-2xl font-bold tracking-wider inline-block">
+                    <span class="text-stroke">MICHAL</span> <span class="glow-text">MIGDA</span>
+                </div>
+            </div>
+            <div class="mb-6">
+                <div class="flex justify-center space-x-8">
+                    <a href="#home" class="hover:opacity-100">Home</a>
+                    <a href="#about" class="hover:opacity-100">About</a>
+                    <a href="#work" class="hover:opacity-100">Work</a>
+                    <a href="#blog" class="hover:opacity-100">Blog</a>
+                    <a href="#contact" class="hover:opacity-100">Contact</a>
+                </div>
+            </div>
+            <div>
+                &copy; 2023 Michal Migda. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Mobile menu toggle (would need more implementation)
+        document.querySelector('.md\\:hidden button').addEventListener('click', function() {
+            alert('Mobile menu would open here in a full implementation');
+        });
+        
+        // Add animation when elements come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeIn');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
